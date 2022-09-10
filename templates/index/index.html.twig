@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    {{ component('header') }}
+    <main>
+        <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">Test yourself</h1>
+                    <p class="lead text-muted">Take a fun quiz. Answer 10 questions in 5 minutes. Become a leader in the
+                        leaderboard.</p>
+                    <p>
+                        <a href="{{ path('app_index_start_quiz') }}" class="btn btn-success my-2">Start Quiz</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row row-cols-md-2 g-2 justify-content-center">
+                    <div class="card">
+                        <div class="card-header">LeaderBoard</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Top 10</h5>
+                        </div>
+                        <table class="table table-info table-striped">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Total Score</th>
+                                <th>Time used</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in topList %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ item.participant.firstName }}</td>
+                                    <td>{{ item.participant.email }}</td>
+                                    <td>{{ item.score }}</td>
+                                    <td>{{ item.quizTimeString }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    {{ component('footer') }}
+{% endblock %}

@@ -1,0 +1,41 @@
+<div class="col-auto">
+    <div class="card">
+        <div class="card-header">
+            Quiz Result
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">ID: {{ this.quizSession.uuid }}</h5>
+            <table class="table table-info">
+                <tr>
+                    <td>NAME:</td>
+                    <td>{{ this.quizSession.participant.fullName }}</td>
+                </tr>
+                <tr>
+                    <td>EMAIL:</td>
+                    <td>{{ this.quizSession.participant.email }}</td>
+                </tr>
+                <tr>
+                    <td>SCORE:</td>
+                    <td>{{ this.quizSession.score }}</td>
+                </tr>
+                <tr>
+                    <td>UNANSWERED:</td>
+                    <td>{{ this.quizSession.unanswered }}</td>
+                </tr>
+                <tr>
+                    <td>START DATE:</td>
+                    <td>{{ this.quizSession.startAt | date('d-m-Y H:s:i') }}</td>
+                </tr>
+
+                <tr>
+                    <td>Quiz Time:</td>
+                    <td>{{ this.quizSession.quizTimeString }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="card-footer">
+            <a href="{{ path('app_index_restart_quiz_session',{uuid: this.quizSession.uuid}) }}"
+               class="btn btn-primary">Restart</a>
+        </div>
+    </div>
+</div>

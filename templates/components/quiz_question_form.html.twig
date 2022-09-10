@@ -1,0 +1,20 @@
+<div {{ attributes }}>
+    {% if this.message is not empty %}
+        <h6 class="card-subtitle mb-2 text-muted">{{ this.message | raw }}</h6>
+    {% endif %}
+    {{ form_start(form, {
+        attr: {
+            'data-model': 'norender|*'
+        }
+    }) }}
+    {{ form_row(form.uuid) }}
+    {{ form_row(form.questionId) }}
+    {{ form_row(form.answer) }}
+    {% if this.message is empty %}
+        <a data-action="live#action"
+           data-action-name="prevent|save"
+           data-loading="addAttribute(disabled)"
+           class="btn btn-success">Submit</a>
+    {% endif %}
+    {{ form_end(form) }}
+</div>

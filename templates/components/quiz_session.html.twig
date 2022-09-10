@@ -1,0 +1,19 @@
+<div {{ attributes }}>
+    <div class="card">
+        <div class="card-header">
+            Question {{ this.quizIndex }}/{{ this.quizSession.questionIds | length }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ this.currentQuestion.text | raw }}</h5>
+            {{ component('quiz_question_form', {
+                formRequest: this.questionRequest,
+            }) }}
+        </div>
+        <div class="card-footer">
+            <a data-action="live#action"
+               data-action-name="nextQuestion(index={{ this.quizIndex }})"
+               data-loading="addAttribute(disabled)"
+               class="btn btn-primary float-end">Next Question</a>
+        </div>
+    </div>
+</div>
