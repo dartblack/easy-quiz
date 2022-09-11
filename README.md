@@ -5,6 +5,14 @@
 ```bash
 make up && make install
 ```
+#### Or
+
+```bash
+docker-compose up -d
+docker-compose exec php composer install
+docker-compose exec php ./bin/console doc:mig:mig --no-interaction
+docker-compose exec php ./bin/console doc:fix:load --no-interaction --purge-with-truncate
+```
 
 ## Open project
 
