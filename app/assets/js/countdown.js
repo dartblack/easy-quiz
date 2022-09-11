@@ -1,6 +1,6 @@
 $('document').ready(function () {
     const countdownElement = $('#quiz-countdown');
-    setInterval(function () {
+    const interval = setInterval(function () {
         const timer = $('#quiz-countdown').html().split(':');
         let hours = timer[0];
         let minutes = parseInt(timer[1], 10);
@@ -8,6 +8,7 @@ $('document').ready(function () {
         --seconds;
         minutes = (seconds < 0) ? --minutes : minutes;
         if (minutes < 0 && seconds < 0) {
+            clearInterval(interval);
             window.location.reload();
         } else {
             seconds = (seconds < 0) ? 59 : seconds;
