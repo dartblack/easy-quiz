@@ -21,7 +21,7 @@ install:
 	docker-compose exec -u$(UID) php composer install
 	docker-compose exec -u$(UID) php ./bin/console doc:mig:mig --no-interaction
 	docker-compose exec -u$(UID) php ./bin/console doc:fix:load --no-interaction --purge-with-truncate
-    docker-compose exec php npm install
-    docker-compose exec php npm run install
+    docker-compose exec -u$(UID) php npm install
+    docker-compose exec -u$(UID) php npm run build
 
 reinstall: down build up install
