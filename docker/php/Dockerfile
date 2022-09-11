@@ -32,3 +32,7 @@ USER root
 RUN npm install && npm run build
 RUN rm -rf /var/www/symfony_docker/node_modules
 RUN chown -R www-data:www-data /var/www/symfony_docker/public/build
+
+#cron setup
+COPY ./docker/php/crontab.local /etc/cron.d/cronjobs
+RUN chmod 0644 /etc/cron.d/cronjobs && crontab /etc/cron.d/cronjobs

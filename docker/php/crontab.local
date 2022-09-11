@@ -1,0 +1,3 @@
+*/2 * * * * /usr/local/bin/php /var/www/symfony_docker/bin/console app:close-quiz-sessions
+
+# do not remove last line !!!
