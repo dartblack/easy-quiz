@@ -54,6 +54,18 @@ class QuizSessionRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function getExpiredSessions()
+    {
+        $expiredDate = new \DateTimeImmutable('-300 seconds');
+        return $this->createQueryBuilder('q')
+            ->andWhere('q.finished = :finished')
+            ->setParameter('finished', false, ParameterType::BOOLEAN)
+            ->andWhere('q.startAt < :startAt')
+            ->setParameter('startAt', $expiredDate)
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return QuizSession[] Returns an array of QuizSession objects
 //     */

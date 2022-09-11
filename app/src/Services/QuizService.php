@@ -101,4 +101,9 @@ class QuizService
         $ids = $quizSession->getQuestionIds();
         return $questionId == $ids[count($ids) - 1];
     }
+
+    public function getExpiredQuizSessions()
+    {
+        return $this->quizSessionRepository->getExpiredSessions();
+    }
 }
