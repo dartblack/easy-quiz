@@ -40,6 +40,13 @@ services:
       - php
       - database
 
+  node:
+    build:
+      context: .
+      dockerfile: ./docker/node/Dockerfile
+    volumes:
+      - './app:/usr/src/app'
+      - '/usr/src/app/node_modules'
 
 volumes:
   ###> doctrine/doctrine-bundle ###
