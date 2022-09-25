@@ -11,8 +11,8 @@ make up && make install
 ```bash
 docker-compose up -d
 docker-compose exec php composer install
-docker-compose exec php ./bin/console doc:mig:mig --no-interaction
-docker-compose exec php ./bin/console doc:fix:load --no-interaction --purge-with-truncate
+docker-compose exec php php bin/console doc:mig:mig --no-interaction
+docker-compose exec php php bin/console doc:fix:load --no-interaction --purge-with-truncate
 docker-compose exec php npm install
 docker-compose exec php npm run build
 ```

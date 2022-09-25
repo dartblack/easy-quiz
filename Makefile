@@ -1,5 +1,3 @@
-UID := $(shell id -u)
-
 default: build up
 
 build:
@@ -15,14 +13,14 @@ down:
 	docker-compose down --volumes --rmi local --remove-orphans
 
 php:
-	docker-compose exec -u$(UID) php bash
+	docker-compose exec php bash
 
 install:
-	docker-compose exec -u$(UID) php composer install
-	docker-compose exec -u$(UID) php npm install
-	docker-compose exec -u$(UID) php npm run build
-	docker-compose exec -u$(UID) php ./bin/console doc:mig:mig --no-interaction
-	docker-compose exec -u$(UID) php ./bin/console doc:fix:load --no-interaction --purge-with-truncate
+	docker-compose exec php composer install
+	docker-compose exec php npm install
+	docker-compose exec php npm run build
+	docker-compose exec php php bin/console doc:mig:mig --no-interaction
+	docker-compose exec php php bin/console doc:fix:load --no-interaction --purge-with-truncate
 
 
 reinstall: down build up install
