@@ -143,6 +143,9 @@ class QuizSession
 
     public function getQuizTimeString(): string
     {
+        if (null === $this->getEndAt()) {
+            return '';
+        }
         $interval = date_diff($this->getStartAt(), $this->getEndAt());
         return $interval->format('%H:%I:%S');
     }
