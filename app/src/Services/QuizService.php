@@ -64,6 +64,10 @@ class QuizService
                     $quizSession->setBestResult(true);
                 }
             }
+            if($quizSession->isBestResult()){
+                $lastBestResult->setBestResult(false);
+                $this->quizSessionRepository->add($lastBestResult);
+            }
         }
         $quizSession->setFinished(true);
         $quizSession->setEndAt(new \DateTimeImmutable());
