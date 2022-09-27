@@ -16,7 +16,7 @@ class Answer
     private ?int $id = null;
 
     #[NotBlank]
-    #[ORM\Column]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private ?bool $correct = false;
 
     #[NotBlank]

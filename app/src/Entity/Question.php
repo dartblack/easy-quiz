@@ -41,7 +41,7 @@ class Question
     #[ORM\OneToMany(mappedBy: 'question', targetEntity: Answer::class, cascade: ['persist'], orphanRemoval: true)]
     private Collection $answers;
 
-    #[ORM\Column]
+    #[ORM\Column(type: Types::BOOLEAN)]
     private ?bool $correct = false;
 
     public function __construct()
@@ -118,7 +118,7 @@ class Question
         return $this->correct;
     }
 
-    public function getCorrect(): ?string
+    public function getStringCorrect(): ?string
     {
         return $this->isCorrect() ? 'True' : 'False';
     }

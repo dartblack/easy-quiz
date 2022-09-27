@@ -47,7 +47,7 @@ class QuizSessionQuestionLiveComponent extends AbstractController
             } else {
                 $this->message = 'Sorry, you are wrong! ';
             }
-            $this->message .= 'The right answer is ' . $question->getCorrect();
+            $this->message .= 'The right answer is ' . $question->getStringCorrect();
         } else {
             $answer = $quizService->getAnswer($formRequest->getAnswer(), $formRequest->getQuestionId());
             if (null !== $answer) {

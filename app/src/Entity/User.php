@@ -17,8 +17,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     const ROLE_USER = 'ROLE_USER';
     const ROLE_ADMIN = 'ROLE_ADMIN';
     const USER_ROLES = [
-        'User' => self::ROLE_USER,
-        'Administrator' => self::ROLE_ADMIN,
+        self::ROLE_USER => self::ROLE_USER,
+        self::ROLE_ADMIN => self::ROLE_ADMIN,
     ];
 
     #[ORM\Id]
@@ -31,7 +31,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
-    #[Choice(choices: self::USER_ROLES)]
     #[ORM\Column]
     private array $roles = [];
 
